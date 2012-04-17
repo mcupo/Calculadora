@@ -30,7 +30,7 @@ public class CalculadoraLineal
 	
 	public void agregarOperacion(String signo)
 	{
-		Fabrica faop = new Fabrica();
+		Fabrica faop = Fabrica.instace();
 		operacion = faop.crearOperacion(signo);
 		
 		/*Para sofi
