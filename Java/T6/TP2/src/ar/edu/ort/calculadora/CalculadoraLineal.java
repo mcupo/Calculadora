@@ -1,6 +1,8 @@
 package ar.edu.ort.calculadora;
 
-public class CalculadoraLineal 
+import java.util.Observable;
+
+public class CalculadoraLineal extends Observable
 {
 	private double total;
 	private Operacion operacion;
@@ -9,6 +11,9 @@ public class CalculadoraLineal
 	{
 		total=0;
 		operacion=null;
+		
+		setChanged();
+		notifyObservers();
 	}
 	
 	public double getTotal()
@@ -26,6 +31,8 @@ public class CalculadoraLineal
 		{
 			operacion.calcular(total, numero);
 		}
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void agregarOperacion(String signo)
