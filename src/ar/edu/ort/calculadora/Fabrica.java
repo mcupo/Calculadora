@@ -7,7 +7,7 @@ import java.util.Properties;
 import ar.edu.ort.operaciones.*;
 
 /**
- * Fabrica singleton
+ * Fabrica singleteada que devuelve objetos de tipo operacion
  *
  */
 
@@ -21,9 +21,9 @@ public final class Fabrica
 		props=new Properties();
 		try
 		{
-			props.load(getClass().getResourceAsStream("prueba.properties"));
+			props.load(getClass().getResourceAsStream("calculadora.properties"));
 		}
-		catch(Exception ex){ex.printStackTrace();}
+		catch(IOException ex){}
 		props.put("+", Suma.class.getCanonicalName());
 		props.put("-", Resta.class.getCanonicalName());
 		props.put("/", Division.class.getCanonicalName());
