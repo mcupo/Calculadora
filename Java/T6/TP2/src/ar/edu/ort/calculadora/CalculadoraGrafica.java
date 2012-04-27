@@ -7,6 +7,11 @@ import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * Clase para dibujar la calculadora
+ *
+ */
+
 public class CalculadoraGrafica extends JFrame implements Observer
 {
 	private CalculadoraLineal calc;

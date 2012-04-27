@@ -3,6 +3,11 @@ package ar.edu.ort.calculadora;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Clase observadora que imprime por pantalla los resultados parciales de la calculadora
+ *
+ */
+
 public class PantallaCalculadora implements Observer 
 {
 

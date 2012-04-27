@@ -2,6 +2,11 @@ package ar.edu.ort.calculadora;
 
 import java.util.Observable;
 
+/**
+ * Clase encargada de calcular en base a una operacion.
+ * Es observada por {@link ArchivoCalculadora}
+ */
+
 public class CalculadoraLineal extends Observable
 {
 	private double total;
@@ -29,7 +34,7 @@ public class CalculadoraLineal extends Observable
 		}
 		else
 		{
-			operacion.calcular(total, numero);
+			total=operacion.calcular(total, numero);
 		}
 		setChanged();
 		notifyObservers();

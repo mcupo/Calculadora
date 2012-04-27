@@ -5,6 +5,12 @@ import java.io.PrintStream;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Clase observadora que escribe en un archivo de texo los subtotales de un conjunto 
+ * de operaciones realizadas por {@link CalculadoraLineal}
+ *
+ */
+
 public class ArchivoCalculadora implements Observer
 {
 	private PrintStream ps;
