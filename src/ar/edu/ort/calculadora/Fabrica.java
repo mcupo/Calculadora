@@ -22,7 +22,6 @@ public final class Fabrica
 		try
 		{
 			props.load(getClass().getResourceAsStream("/ar/edu/ort/operaciones/calculadora.properties"));
-			System.out.println(getClass().getName());
 		}
 		catch(IOException ex){}
 		props.put("+", Suma.class.getCanonicalName());
