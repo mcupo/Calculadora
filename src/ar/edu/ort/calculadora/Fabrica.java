@@ -1,7 +1,6 @@
 package ar.edu.ort.calculadora;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.Properties;
 
 import ar.edu.ort.operaciones.*;
@@ -38,13 +37,15 @@ public final class Fabrica
 	
 	public Operacion crearOperacion(String signo)
 	{
+		//Obtengo el nombre de la clase buscandola en las properties
 		String nombreClase=props.getProperty(signo);
-		//System.out.println(nombreClase);
 		
 		try
 		{
 			Class clase;
+			//Verifico que exista la clase
 			clase=Class.forName(nombreClase);
+			//Si existe creo una instancia de la misma
 			Object objeto = clase.newInstance();
 			return(Operacion) objeto;
 		}
