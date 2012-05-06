@@ -1,6 +1,7 @@
 package ar.edu.ort.calculadora;
 
 import java.util.Observable;
+import java.util.Properties;
 
 /**
  * Clase encargada de calcular en base a una operacion.
@@ -44,26 +45,10 @@ public class CalculadoraLineal extends Observable
 	{
 		Fabrica faop = Fabrica.instace();
 		operacion = faop.crearOperacion(signo);
-		
-		/*Para sofi
-		 * if(signo.equals("+"))
-		{
-			operacion = new Suma();
-		}
-		else
-		{
-			if(signo.equals("-"))
-			{
-				operacion = new Resta();
-			}
-			else
-			{
-				if(signo.equals("/"))
-				{
-					operacion = new Division();
-				}
-				else operacion = new Multiplicacion();
-			}	
-		}*/
+	}
+	
+	public Properties getOperaciones()
+	{
+		return Fabrica.instace().getProperties();
 	}
 }
