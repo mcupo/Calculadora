@@ -35,6 +35,7 @@ public final class Fabrica
 		return instance;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public Operacion crearOperacion(String signo)
 	{
 		//Obtengo el nombre de la clase buscandola en las properties
@@ -52,17 +53,12 @@ public final class Fabrica
 		catch(Exception ex)
 		{
 			ex.printStackTrace();
-		}
-		
-		/*if("+".equals(signo))
-			return new Suma();
-		if("-".equals(signo))
-			return new Resta();
-		if("/".equals(signo))
-			return new Division();
-		if("*".equals(signo))
-			return new Multiplicacion();*/
-		
+		}	
 		return null;
+	}
+	
+	public Properties getProperties()
+	{
+		return props;
 	}
 }
