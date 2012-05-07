@@ -1,5 +1,6 @@
 package ar.edu.ort.calculadora;
 
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Properties;
 
@@ -47,8 +48,8 @@ public class CalculadoraLineal extends Observable
 		operacion = faop.crearOperacion(signo);
 	}
 	
-	public Properties getOperaciones()
+	/*public HashMap<String, String> getOperaciones()
 	{
 		return Fabrica.instace().getProperties();
-	}
+	}*/
 }
