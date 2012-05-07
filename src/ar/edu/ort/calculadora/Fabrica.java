@@ -1,6 +1,8 @@
 package ar.edu.ort.calculadora;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Properties;
 
 import ar.edu.ort.operaciones.*;
@@ -35,7 +37,6 @@ public final class Fabrica
 		return instance;
 	}
 	
-	@SuppressWarnings("rawtypes")
 	public Operacion crearOperacion(String signo)
 	{
 		//Obtengo el nombre de la clase buscandola en las properties
@@ -43,7 +44,7 @@ public final class Fabrica
 		
 		try
 		{
-			Class clase;
+			Class<?> clase;
 			//Verifico que exista la clase
 			clase=Class.forName(nombreClase);
 			//Si existe creo una instancia de la misma
