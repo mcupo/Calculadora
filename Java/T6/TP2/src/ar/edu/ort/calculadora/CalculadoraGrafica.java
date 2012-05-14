@@ -14,8 +14,6 @@ import javax.swing.JFrame;
 
 /**
  * Clase que obsverva a la clase {@link CalculadoraLineal} para dibujar la calculadora
- * TODO
- * Hacer andar el caso=0.3+0.3
  */
 
 public class CalculadoraGrafica extends JFrame implements Observer
@@ -88,9 +86,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 			}
 			y=y-37;
 		}
-		/**
-		 * TODO Validar que solo se pueda escribir uno, salvo si hay una coma
-		 */
+
 		//0
 		btn = new Button("0");
 		add(btn);
@@ -99,7 +95,18 @@ public class CalculadoraGrafica extends JFrame implements Observer
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				txt.setText( txt.getText() + "0");
+				//txt.setText( txt.getText() + "0");
+				//lastActionPerformed="number";
+				
+				//Pregunto si hay un cero o si el último botón presionado fue el de una operación
+				if((txt.getText().equals("0")) || (lastActionPerformed.equals("operation")))
+				{
+					txt.setText("0");
+				}
+				else
+				{	
+					txt.setText(txt.getText()+  "0" );
+				}
 				lastActionPerformed="number";
 			}
 		});
