@@ -25,6 +25,7 @@ public class Test
 		Observer obs2 = new ArchivoCalculadora("C:\\calc.log");
 		calc.addObserver(obs2);
 		
+		/* 
 		calc.limpiar();
 		calc.agregarNumero(10);
 		calc.agregarOperacion("+");
@@ -34,5 +35,6 @@ public class Test
 		calc.agregarOperacion("+");
 		calc.agregarNumero(10);
 		System.out.println("El total es: " + calc.getTotal());
+		*/
 	}
 }
