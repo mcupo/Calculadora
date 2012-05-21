@@ -1,8 +1,7 @@
 package ar.edu.ort.calculadora;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
+
 import java.util.Properties;
 
 import ar.edu.ort.operaciones.*;
