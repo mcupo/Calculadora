@@ -133,6 +133,14 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		add(btn);
 		btn.setName("signo");
 		btn.setBounds(38,138,anchoButton,altoButton);
+		btn.addActionListener(new ActionListener()
+		{	
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				txt.setText(String.valueOf(Double.valueOf(txt.getText())*-1));
+			}
+		});
 	}
 	
 	public void mostrarComa()
@@ -313,8 +321,15 @@ public class CalculadoraGrafica extends JFrame implements Observer
 			}
 			else
 			{
-				calc.agregarNumero(Double.valueOf(txt.getText()));
-				calc.agregarOperacion(((Button)e.getSource()).getLabel());
+				if(lastActionPerformed.equals("operation"))
+				{
+					calc.agregarOperacion(((Button)e.getSource()).getLabel());
+				}
+				else
+				{
+					calc.agregarNumero(Double.valueOf(txt.getText()));
+					calc.agregarOperacion(((Button)e.getSource()).getLabel());
+				}
 			}
 			//Si la operación no es básica, la última acción es similar a mostrar un resultado
 			if(esOperacionBasica(((Button)e.getSource()).getLabel()))
