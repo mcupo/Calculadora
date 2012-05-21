@@ -156,6 +156,10 @@ public class CalculadoraGrafica extends JFrame implements Observer
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				if(lastActionPerformed.equals("operation"))
+				{
+					txt.setText("0.");
+				}
 				//Valido que solo se pueda escribir una sola
 				if((txt.getText()).indexOf(".")==-1)
 					txt.setText(txt.getText()+  "." );
