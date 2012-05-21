@@ -7,8 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Properties;
 
 import javax.swing.JFrame;
 
@@ -24,6 +27,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 	private final TextField txt = new TextField();
 	private CalculadoraLineal calc = new CalculadoraLineal();
 	private String lastActionPerformed = new String();
+	private Properties operacionesAgregadas = getOperacionesAgregadas();
 	
 	public CalculadoraGrafica()
 	{
@@ -43,7 +47,15 @@ public class CalculadoraGrafica extends JFrame implements Observer
 	{
 		//Seteo el layout en null para manejar la disposición de elementos a mano con setBounds
 		setLayout(null);
-		setBounds(0, 0, 220, 250);
+		//Pregunto si existen operaciones agregadas
+		if (operacionesAgregadas.isEmpty())
+		{
+			setBounds(0, 0, 170, 250);
+		}
+		else
+		{
+			setBounds(0, 0, 200, 250);
+		}
 		setBackground(Color.ORANGE);
 		setForeground(Color.RED);
 		addWindowListener(new WindowAdapter()
@@ -58,7 +70,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 	public void crearTextField()
 	{
 		add(txt);
-		txt.setBounds(1,1,200,25);
+		txt.setBounds(1,1,145,25);
 		txt.setBackground(Color.WHITE);
 		txt.setForeground(Color.BLACK);
 		txt.setEnabled(false);
@@ -186,7 +198,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 	}
 	
 	public void mostrarOperaciones()
-	{
+	{	
 		Button btn;
 		
 		btn = new Button("+");
@@ -214,6 +226,24 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		btn.addActionListener(new OperationEventHandler());
 	}
 	
+	public void mostrarOperacionesAgregadas()
+	{
+		Button btn;
+		Properties prop = getOperacionesAgregadas();
+		int y=27;
+		
+		for( Object key : prop.keySet() )
+		{
+				//System.out.println( key.toString() + ":" + prop.get(key));
+				btn = new Button(key.toString());
+				add(btn);
+				btn.setName(key.toString());
+				btn.setBounds(148,y,anchoButton,altoButton);
+				btn.addActionListener(new OperationEventHandler());
+				y+=37;
+		}
+	}
+	
 	public void mostrarBotones()
 	{
 		mostrarNumeros();
@@ -222,6 +252,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		mostrarCE();
 		mostrarIgual();
 		mostrarOperaciones();
+		mostrarOperacionesAgregadas();
 	}
 	
 	private void crearControles()
@@ -286,7 +317,39 @@ public class CalculadoraGrafica extends JFrame implements Observer
 				calc.agregarNumero(Double.valueOf(txt.getText()));
 				calc.agregarOperacion(((Button)e.getSource()).getLabel());
 			}
-			lastActionPerformed="operation";
+			//Si la operación no es básica, la última acción es similar a mostrar un resultado
+			if(esOperacionBasica(((Button)e.getSource()).getLabel()))
+			{
+				lastActionPerformed="operation";
+			}
+			else
+			{
+				lastActionPerformed="=";
+			}
+		}
+	}
+	
+	private Properties getOperacionesAgregadas()
+	{
+		//Clono el objeto porque necesito una nueva instancia
+		Properties operacionesAgregadas=(Properties) calc.getOperaciones().clone();
+		//Remuevo las operaciones básicas
+		operacionesAgregadas.remove("+");
+		operacionesAgregadas.remove("-");
+		operacionesAgregadas.remove("*");
+		operacionesAgregadas.remove("/");
+		return operacionesAgregadas;
+	}
+	
+	private Boolean esOperacionBasica(String operacion)
+	{
+		if(operacion.equals("+") || operacion.equals("-") || operacion.equals("*") || operacion.equals("/") )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

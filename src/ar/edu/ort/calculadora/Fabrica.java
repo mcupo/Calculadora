@@ -58,7 +58,7 @@ public final class Fabrica
 		return null;
 	}
 	
-	public Properties getProperties()
+	public final Properties getProperties()
 	{
 		return props;
 	}
