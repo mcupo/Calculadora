@@ -138,7 +138,10 @@ public class CalculadoraGrafica extends JFrame implements Observer
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				txt.setText(String.valueOf(Double.valueOf(txt.getText())*-1));
+				if(!txt.getText().equals("0"))
+				{
+					txt.setText(String.valueOf(Double.valueOf(txt.getText())*-1));
+				}
 			}
 		});
 	}
