@@ -302,7 +302,15 @@ public class CalculadoraGrafica extends JFrame implements Observer
 			}
 			else
 			{	
-				txt.setText(txt.getText()+  valor );
+				if(lastActionPerformed.equals("="))
+				{
+					calc.limpiar();
+					txt.setText(valor);
+				}
+				else
+				{
+					txt.setText(txt.getText()+  valor );
+				}
 			}
 			lastActionPerformed="number";
 		}
