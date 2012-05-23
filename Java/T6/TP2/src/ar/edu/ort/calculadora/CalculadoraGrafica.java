@@ -44,7 +44,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		txt.setText(String.valueOf(calc.getTotal()));
 	}
 	
-	public void crearVentana()
+	private void crearVentana()
 	{
 		int y=170;
 		//Seteo el layout en null para manejar la disposición de elementos a mano con setBounds
@@ -78,7 +78,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		});
 	}
 	
-	public void crearTextField()
+	private void crearTextField()
 	{
 		add(txt);
 		txt.setBounds(1,1,145,25);
@@ -88,7 +88,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		txt.setText("0");
 	}
 	
-	public void mostrarNumeros()
+	private void mostrarNumeros()
 	{
 		Button btn;
 		int y=101;
@@ -137,7 +137,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		btn.setBounds(1,138,anchoButton,altoButton);
 	}
 	
-	public void mostrarSigno()
+	private void mostrarSigno()
 	{
 		//Signo
 		Button btn;
@@ -158,7 +158,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		});
 	}
 	
-	public void mostrarComa()
+	private void mostrarComa()
 	{
 		//Coma
 		Button btn;
@@ -183,7 +183,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		});
 	}
 	
-	public void mostrarCE()
+	private void mostrarCE()
 	{
 		//Limpiar
 		Button btn;
@@ -204,7 +204,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		});
 	}
 	
-	public void mostrarIgual()
+	private void mostrarIgual()
 	{
 		//Igual
 		Button btn;
@@ -223,7 +223,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		});
 	}
 	
-	public void mostrarOperaciones()
+	private void mostrarOperaciones()
 	{	
 		Button btn;
 		
@@ -252,7 +252,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		btn.addActionListener(new OperationEventHandler());
 	}
 	
-	public void mostrarOperacionesAgregadas()
+	private void mostrarOperacionesAgregadas()
 	{
 		Button btn;
 		Properties prop = getOperacionesAgregadas();
@@ -280,7 +280,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		}
 	}
 	
-	public void mostrarBotones()
+	private void mostrarBotones()
 	{
 		mostrarNumeros();
 		mostrarSigno();
