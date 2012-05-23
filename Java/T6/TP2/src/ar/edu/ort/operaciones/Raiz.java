@@ -8,4 +8,10 @@ public class Raiz extends Operacion
 	{
 		return Math.sqrt(numero1);
 	}
+
+	@Override
+	public Boolean esBinaria()
+	{
+		return false;
+	}
 }

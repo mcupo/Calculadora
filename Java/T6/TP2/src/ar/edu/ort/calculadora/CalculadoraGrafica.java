@@ -368,8 +368,8 @@ public class CalculadoraGrafica extends JFrame implements Observer
 					calc.agregarOperacion(((Button)e.getSource()).getLabel());
 				}
 			}
-			//Si la operación no es básica, la última acción es similar a mostrar un resultado
-			if(esOperacionBasica(((Button)e.getSource()).getLabel()))
+			//Si la operación no es binaria, la última acción es similar a mostrar un resultado
+			if(calc.getOperacion().esBinaria())
 			{
 				lastActionPerformed="operation";
 			}
@@ -390,17 +390,5 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		operacionesAgregadas.remove("*");
 		operacionesAgregadas.remove("/");
 		return operacionesAgregadas;
-	}
-	
-	private Boolean esOperacionBasica(String operacion)
-	{
-		if(operacion.equals("+") || operacion.equals("-") || operacion.equals("*") || operacion.equals("/") )
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 	}
 }

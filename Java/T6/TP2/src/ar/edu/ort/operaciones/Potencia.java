@@ -10,4 +10,10 @@ public class Potencia extends Operacion
 		return numero1*numero1;
 	}
 
+	@Override
+	public Boolean esBinaria()
+	{
+		return false;
+	}
+
 }
