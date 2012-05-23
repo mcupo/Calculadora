@@ -117,10 +117,7 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		{	
 			@Override
 			public void actionPerformed(ActionEvent e)
-			{
-				//txt.setText( txt.getText() + "0");
-				//lastActionPerformed="number";
-				
+			{	
 				//Pregunto si hay un cero o si el último botón presionado fue el de una operación
 				if((txt.getText().equals("0")) || (lastActionPerformed.equals("operation")))
 				{
@@ -262,7 +259,6 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		
 		for( Object key : prop.keySet() )
 		{
-				//System.out.println( key.toString() + ":" + prop.get(key));
 				btn = new Button(key.toString());
 				add(btn);
 				btn.setName(key.toString());
