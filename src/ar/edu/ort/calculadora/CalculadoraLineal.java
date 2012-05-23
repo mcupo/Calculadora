@@ -45,13 +45,18 @@ public class CalculadoraLineal extends Observable
 	{
 		Fabrica faop = Fabrica.instace();
 		operacion = faop.crearOperacion(signo);
-		//Si no es una operación básica, ejecuto la operación, ya que necesita un único número
-		if(!signo.equals("+") && !signo.equals("-") && !signo.equals("*") && !signo.equals("/"))
+		//Si no es una operación binaria, la ejecuto, ya que necesita un único número
+		if(!operacion.esBinaria())
 		{
 			total=operacion.calcular(total, -1);
 			setChanged();
 			notifyObservers();
 		}
+	}
+	
+	public final Operacion getOperacion()
+	{
+		return operacion;
 	}
 	
 	public final Properties getOperaciones()

@@ -9,4 +9,10 @@ public final class Resta extends Operacion
 	{
 		return numero1-numero2;
 	}
+
+	@Override
+	public Boolean esBinaria()
+	{
+		return true;
+	}
 }
