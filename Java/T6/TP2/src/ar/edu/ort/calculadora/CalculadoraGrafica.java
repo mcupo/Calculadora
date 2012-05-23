@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Properties;
@@ -44,16 +46,26 @@ public class CalculadoraGrafica extends JFrame implements Observer
 	
 	public void crearVentana()
 	{
+		int y=170;
 		//Seteo el layout en null para manejar la disposición de elementos a mano con setBounds
 		setLayout(null);
 		//Pregunto si existen operaciones agregadas
 		if (operacionesAgregadas.isEmpty())
 		{
-			setBounds(0, 0, 170, 250);
+			setBounds(0, 0, y, 250);
 		}
 		else
 		{
-			setBounds(0, 0, 200, 250);
+			/* Agrando la ventana en base al tamaño del hash de operaciones agregadas.
+			 * Divido el tamaño por 5, ya que entran 5 botones por columna, y lo multiplico
+			 * por 37, que es el tamaño necesario para que se vea la columna en la ventana.
+			 * Es necesario castear la división a float para luego redondear siempre hacia
+			 * arriba los decimales, ya que por más que se dibuje 1 solo botón en una columna,
+			 * es necesario agrandar por un total de 37.
+			 */
+			BigDecimal bd = new BigDecimal((float)operacionesAgregadas.size()/5);
+			y+=(bd.setScale(0, RoundingMode.UP)).intValue()*37;
+			setBounds(0, 0, y, 250);
 		}
 		setBackground(Color.ORANGE);
 		setForeground(Color.RED);
@@ -245,6 +257,8 @@ public class CalculadoraGrafica extends JFrame implements Observer
 		Button btn;
 		Properties prop = getOperacionesAgregadas();
 		int y=27;
+		int x=148;
+		int c=1;
 		
 		for( Object key : prop.keySet() )
 		{
@@ -252,9 +266,17 @@ public class CalculadoraGrafica extends JFrame implements Observer
 				btn = new Button(key.toString());
 				add(btn);
 				btn.setName(key.toString());
-				btn.setBounds(148,y,anchoButton,altoButton);
+				btn.setBounds(x,y,anchoButton,altoButton);
 				btn.addActionListener(new OperationEventHandler());
 				y+=37;
+				//Corro el eje x y vuelvo a inicializar el eje y cuando ya se dibujaron 5 botones y aun restan más
+				if(c==5)
+				{
+					x+=37;
+					y=27;
+					c=0;
+				}
+				c++;
 		}
 	}
 	
