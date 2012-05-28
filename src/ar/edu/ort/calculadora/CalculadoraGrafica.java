@@ -17,6 +17,7 @@ import java.util.Properties;
 import javax.swing.JFrame;
 
 /**
+ * @author Grupo Marco Cupo, Sofia Giovacchini y Ezequiel Kleiman
  * Clase que obsverva a la clase {@link CalculadoraLineal} para dibujar la calculadora
  */
 
